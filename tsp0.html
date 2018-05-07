@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+
+    <style>
+        #map {
+            height:100%;
+            
+        }
+        html, body {
+              height: 100%;
+              margin: 0;
+              padding: 0;
+            }
+    </style>
+    
+</head>
+<body>
+    <div id="map"></div>
+
+
+<script>
+    var schools = [
+	{
+        "name": "Augustine University",
+        "nick": "A",
+		"coord": {
+			"lat": 6.6490121,
+			"lng": 3.9912698, 
+			},
+		"url": "https://bit.ly/2FiSU25"
+	},
+
+	{
+        "name": "Lagos State University",
+        "nick": "B",
+		"coord" : {
+			"lat": 6.4639375,
+			"lng": 3.1988882, 
+			},
+		"url": "https://bit.ly/2vQrMIu"
+	},
+
+	{
+        "name": "University of Lagos",
+        "nick": "C",
+		"coord" : {
+			"lat": 6.5193116,
+			"lng": 3.3971378, 
+			},
+		"url": "https://bit.ly/2KeSrlu"
+	},
+
+	{
+        "name": "Yaba College of Technology",
+        "nick": "D",
+		"coord" : {
+			"lat": 6.5187345,
+			"lng": 3.3722376, 
+			},
+		"url": "https://bit.ly/2vTgcMW"
+	},
+
+	{
+        "name": "Adeniran Ogunsanya College of Education",
+        "nick": "E",
+		"coord" : {
+			"lat": 6.5001372,
+			"lng": 3.1086725, 
+			},
+		"url": "https://bit.ly/2FfWNVz"
+	},
+
+	{
+        "name": "Anchor University",
+        "nick": "F",
+		"coord" : {
+			"lat": 6.6057617,
+			"lng": 3.2392411, 
+			},
+		"url": "https://bit.ly/2KfbsUR"
+	},
+
+	{
+        "name": "Caleb University",
+        "nick": "G",
+		"coord" : {
+			"lat": 6.6194184,
+			"lng": 3.508265, 
+			},
+		"url": "https://bit.ly/2KfbxI9"
+	},
+
+	{
+        "name": "Christopher University",
+        "nick": "H",
+		"coord" : {
+			"lat": 6.8273478,
+			"lng": 3.4622118, 
+			},
+		"url": "https://bit.ly/2r1DyKl"
+	},
+
+	{
+        "name": "Federal College of Education Akoka",
+        "nick": "I",
+		"coord" : {
+			"lat": 6.5225924,
+			"lng": 3.3819078, 
+			},
+		"url": "https://bit.do/eeQUk"
+	},
+
+	{
+        "name": "Lagos state polytechnic",
+        "nick": "J",
+		"coord" : {
+			"lat": 6.6462946,
+			"lng": 3.5156813, 
+			},
+		"url": "https://bit.do/eeQT8"
+	},
+
+	{
+        "name": "National open university of Nigeria",
+        "nick": "K",
+		"coord" : {
+			"lat": 6.4341691,
+			"lng": 3.4069982, 
+			},
+		"url": "https://bit.do/eeQUG"
+	},
+
+	{
+        "name": "Pan-Atlantic University",
+        "nick": "L",
+		"coord" : {
+			"lat": 6.4872606,
+			"lng": 3.8531619, 
+			},
+		"url": "https://bit.do/eeQVr"
+	},
+
+	{
+        "name": "Ronik Polytechnic",
+        "nick": "M",
+		"coord" : {
+			"lat": 6.5372312,
+			"lng": 3.2929776, 
+			},
+		"url": "https://bit.do/eeQVK"
+	},
+
+	{
+        "name": "St. Augustine College of Education",
+        "nick": "N",
+		"coord" : {
+			"lat": 6.5238066,
+			"lng": 3.3850396, 
+			},
+		"url": "https://bit.do/eeQVX"
+	},
+
+	{
+        "name": "Grace Polytechnic",
+        "nick": "O",
+		"coord" : {
+			"lat": 6.5131549,
+			"lng": 3.3581842, 
+			},
+		"url": "https://bit.do/eeQV9"
+	},
+
+]
+
+
+        var map;
+        var nicks="";
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 6.5193116, lng: 3.3971378},
+            zoom: 12
+          });
+
+          for(var i = 0; i<schools.length; i++){
+              nicks += schools[i].nick;
+            
+                var marker = new google.maps.Marker({
+                position: schools[i].coord,
+                map: map,
+                title: schools[i].name,
+                
+            });
+
+            
+            google.maps.event.addListener(marker, "click", function (event) {
+            var latitude = this.position.lat();
+            var longitude = this.position.lng();
+            // console.log(longitude);
+            console.log(schools[i].nick);
+            });
+            
+          };
+          console.log(nicks);
+          var newstr = nicks.replace("J", "");
+          console.log(newstr);
+          
+        }
+        
+        
+        
+      
+
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVuMSyyhc7hJGVwJE7wkI7HnyWYvA4Evs&callback=initMap"
+async defer></script>
+
+</body>
+</html>
